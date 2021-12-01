@@ -21,7 +21,7 @@ import com.google.cloud.pubsub.v1.SubscriptionAdminClient;
 import com.google.cloud.pubsub.v1.TopicAdminClient;
 import com.google.pubsub.v1.DetachSubscriptionRequest;
 import com.google.pubsub.v1.Subscription;
-import com.google.pubsub.v1.SubscriptionName;
+import com.google.pubsub.v1.ProjectSubscriptionName;
 import java.io.IOException;
 
 public class DetachSubscriptionExample {
@@ -36,7 +36,7 @@ public class DetachSubscriptionExample {
 
   public static void detachSubscriptionExample(String projectId, String subscriptionId)
       throws IOException {
-    SubscriptionName subscriptionName = SubscriptionName.of(projectId, subscriptionId);
+    ProjectSubscriptionName subscriptionName = ProjectSubscriptionName.of(projectId, subscriptionId);
 
     try (TopicAdminClient topicAdminClient = TopicAdminClient.create()) {
       topicAdminClient.detachSubscription(

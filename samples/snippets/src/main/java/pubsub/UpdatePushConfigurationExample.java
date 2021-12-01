@@ -21,7 +21,7 @@ package pubsub;
 import com.google.cloud.pubsub.v1.SubscriptionAdminClient;
 import com.google.pubsub.v1.PushConfig;
 import com.google.pubsub.v1.Subscription;
-import com.google.pubsub.v1.SubscriptionName;
+import com.google.pubsub.v1.ProjectSubscriptionName;
 import java.io.IOException;
 
 public class UpdatePushConfigurationExample {
@@ -37,7 +37,7 @@ public class UpdatePushConfigurationExample {
   public static void updatePushConfigurationExample(
       String projectId, String subscriptionId, String pushEndpoint) throws IOException {
     try (SubscriptionAdminClient subscriptionAdminClient = SubscriptionAdminClient.create()) {
-      SubscriptionName subscriptionName = SubscriptionName.of(projectId, subscriptionId);
+      ProjectSubscriptionName subscriptionName = ProjectSubscriptionName.of(projectId, subscriptionId);
       PushConfig pushConfig = PushConfig.newBuilder().setPushEndpoint(pushEndpoint).build();
       subscriptionAdminClient.modifyPushConfig(subscriptionName, pushConfig);
       Subscription subscription = subscriptionAdminClient.getSubscription(subscriptionName);

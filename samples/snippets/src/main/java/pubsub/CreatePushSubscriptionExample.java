@@ -21,7 +21,7 @@ package pubsub;
 import com.google.cloud.pubsub.v1.SubscriptionAdminClient;
 import com.google.pubsub.v1.PushConfig;
 import com.google.pubsub.v1.Subscription;
-import com.google.pubsub.v1.SubscriptionName;
+import com.google.pubsub.v1.ProjectSubscriptionName;
 import com.google.pubsub.v1.TopicName;
 import java.io.IOException;
 
@@ -41,7 +41,7 @@ public class CreatePushSubscriptionExample {
       throws IOException {
     try (SubscriptionAdminClient subscriptionAdminClient = SubscriptionAdminClient.create()) {
       TopicName topicName = TopicName.of(projectId, topicId);
-      SubscriptionName subscriptionName = SubscriptionName.of(projectId, subscriptionId);
+      ProjectSubscriptionName subscriptionName = ProjectSubscriptionName.of(projectId, subscriptionId);
       PushConfig pushConfig = PushConfig.newBuilder().setPushEndpoint(pushEndpoint).build();
 
       // Create a push subscription with default acknowledgement deadline of 10 seconds.

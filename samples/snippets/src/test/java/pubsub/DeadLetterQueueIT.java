@@ -25,7 +25,7 @@ import com.google.cloud.pubsub.v1.TopicAdminClient;
 import com.google.cloud.testing.junit4.MultipleAttemptsRule;
 import com.google.protobuf.ByteString;
 import com.google.pubsub.v1.PubsubMessage;
-import com.google.pubsub.v1.SubscriptionName;
+import com.google.pubsub.v1.ProjectSubscriptionName;
 import com.google.pubsub.v1.Topic;
 import com.google.pubsub.v1.TopicName;
 import java.io.ByteArrayOutputStream;
@@ -50,7 +50,7 @@ public class DeadLetterQueueIT {
   private static String deadLetterTopicId;
   private static TopicName topicName;
   private static TopicName deadLetterTopicName;
-  private static SubscriptionName subscriptionName;
+  private static ProjectSubscriptionName subscriptionName;
 
   private static void requireEnvVar(String varName) {
     assertNotNull(
@@ -79,7 +79,7 @@ public class DeadLetterQueueIT {
     deadLetterTopicId = "topic-dlq-" + _suffix;
     topicName = TopicName.of(projectId, topicId);
     deadLetterTopicName = TopicName.of(projectId, deadLetterTopicId);
-    subscriptionName = SubscriptionName.of(projectId, subscriptionId);
+    subscriptionName = ProjectSubscriptionName.of(projectId, subscriptionId);
   }
 
   @Before
